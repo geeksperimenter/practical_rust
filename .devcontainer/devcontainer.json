@@ -8,7 +8,6 @@
     }
   },
   "forwardPorts": [22],
-  "remoteUser": "vscode",
   "postCreateCommand": "bash .devcontainer/postbuild.sh",
   "mounts": [
     "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
