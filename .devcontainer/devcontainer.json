@@ -1,0 +1,26 @@
+{
+  "name": "Universal Devcontainer with Rust and SSH",
+  "image": "mcr.microsoft.com/vscode/devcontainers/universal:linux",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest",
+      "publicKey": "${localEnv:HOME}/.ssh/id_rsa.pub"
+    }
+  },
+  "forwardPorts": [22],
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/postbuild.sh",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-vscode.remote-containers"
+      ]
+    }
+  }
+}
